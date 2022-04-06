@@ -16,7 +16,6 @@ You will encounter many situations in which you have no idea what you are suppos
 
 ## :clipboard: Table of Contents
 
-- [:open_book: Introduction](#open_book-introduction)
 - [:triangular_flag_on_post: Bandit Level 00](#triangular_flag_on_post-bandit-level-0)
 - [:triangular_flag_on_post: Bandit Level 00 - 01](#triangular_flag_on_post-bandit-level-00---01)
 - [:triangular_flag_on_post: Bandit Level 01 - 02](#triangular_flag_on_post-bandit-level-01---02)
@@ -76,4 +75,43 @@ If you're using Windows, though, you won't find an SSH client by default. While 
 When you're finished entering the address ,port number,username and password then hit "hosts," and you'll be able to access the bandit0 shell.
 
 ![image](https://user-images.githubusercontent.com/79222856/162048999-5f862d21-ee3f-439f-a0ff-48a18b1a3f27.png)
+
+## :triangular_flag_on_post: Bandit Level 00 - 01
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162050490-5988f2c8-6934-4754-890c-883a8d5418bb.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162051066-f74ff496-7092-43b8-919b-5cfc19c7dbcb.png)
+
+
+### Explanation:
+
+This level is also a straightforward giveaway. As suggested by the level's hint, run **ls** to examine the current directory, then **cat** the **readme** file to view its information. 
+
+If you don't understand the meaning behind any of these commands. Well, try to read the manual pages! **man** is the name of the command that pulls up manpages. So you use **man** by doing this:
+
+```
+$ man [name of program you are interested in]
+```
+Here is the manpages of **ls** and **cat**:
+![image](https://user-images.githubusercontent.com/79222856/162051742-303b54d2-76ee-4372-b03d-d58f94008993.png)
+
+![image](https://user-images.githubusercontent.com/79222856/162051913-24f49238-670e-4eb6-88c8-5eb82c0bc0c7.png)
+
+### Summary:
+```
+bandit0@bandit:~$ ls
+readme
+bandit0@bandit:~$ cat readme 
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+ ```
+The password to the level 01's box is **boJ9jbbUNNfktd78OOpsqOltutMc3MY1**
+
+
+
+
+
 
