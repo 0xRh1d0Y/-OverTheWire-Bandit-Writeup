@@ -327,3 +327,51 @@ bandit5@bandit:~/inhere$ cat maybehere07/.file2
 DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 ```
 The password to gain access to the level 06's box is **DXjZPULLxYr17uwoI01bNLQbtFemEgo7**
+
+
+## :triangular_flag_on_post: Bandit Level 06 - 07
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162209152-62d5805c-71dc-4b47-93c9-0d035bd8b7db.png)
+
+### Solution:
+![image](https://user-images.githubusercontent.com/79222856/162210647-89f803c8-d5aa-44e9-a320-bbc2dbe255b5.png)
+
+### Explanation:
+```
+Similar to previous level, direct application of find command:
+
+bandit6@bandit:~$ ls -a
+.  ..  .bash_logout  .bashrc  .profile
+bandit6@bandit:~$ find /  -user bandit7 -group bandit6 -size 33c 2>/dev/null   
+	
+This gives the path of the concerned file:
+
+/var/lib/dpkg/info/bandit7.password
+bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+```
+The above command searches from the **root** directory (the first or top-most directory in the Linux Filesystem Hierarchy Standard), as shown by **the slash (/)** sign right after the **find** command. Other parameters include: 
+
+1. **user**, which defines the file owner, bandit7.
+
+![image](https://user-images.githubusercontent.com/79222856/162212769-c5acf78c-d128-4ba9-961f-7d25009d3607.png)
+
+2. **group**, which defines the file group, bandit6 in this case.
+
+![image](https://user-images.githubusercontent.com/79222856/162212363-7f5a5389-f176-4a2d-9da2-9cc66a7c6ab1.png)
+
+3. **size**, which defines the size of the file. 33c means 33 bytes of characters.
+
+![image](https://user-images.githubusercontent.com/79222856/162212611-776b5df7-5071-4742-87e6-16d555f11bc4.png)
+
+
+### Summary:
+```
+bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+```
+The password to gain access to the level 07's box is **HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs**
+
