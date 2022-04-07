@@ -203,5 +203,63 @@ pIwrPrtPN36QITSp3EQaw936yaFoFgAB
 ```
 The password to gain access to the box in level 04 is **pIwrPrtPN36QITSp3EQaw936yaFoFgAB**
 
+## :triangular_flag_on_post: Bandit Level 04 - 05
 
+### Problem Description:
+![image](https://user-images.githubusercontent.com/79222856/162160247-dc877a44-7ad2-46fa-9bc1-fd3cbef6adfc.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162160951-b0e911ce-977d-43cb-b9a2-72041cb36027.png)
+
+### Explanation:
+Because just one file is human-readable and contains the password for the following round, rather than accessing each file one by one and reading its content, we may print all of each text and spot the password using:
+
+```
+Checking for human readable file:
+	
+bandit4@bandit:~$ ls
+inhere
+bandit4@bandit:~$ cd inhere
+bandit4@bandit:~/inhere$ ls
+    
+Checking File details:
+
+-file00  -file02  -file04  -file06  -file08
+-file01  -file03  -file05  -file07  -file09
+bandit4@bandit:~/inhere$ ls -l
+total 40
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file00
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file01
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file02
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file03
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file04
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file05
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file06
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file07
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file08
+-rw-r----- 1 bandit5 bandit4 33 May  7  2020 -file09
+bandit4@bandit:~/inhere$ file ./*   //checking file types
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text    
+./-file08: data
+./-file09: data
+As can be  see, `-file07` is human readable.then we're going to be able to **cat** the password directly from it.
+
+bandit4@bandit:~/inhere$ cat ./-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+```
+So,the only human-readable string is **koReBOKuIDDepwhWk7jZC0RTdopnAYKh**. 
+
+### Summary:
+
+![image](https://user-images.githubusercontent.com/79222856/162163359-22ff0ce9-26bd-4a38-b2c8-1ffe0c4eb7c0.png)
+
+The password to gain access to the level 05's box is **koReBOKuIDDepwhWk7jZC0RTdopnAYKh**
 
