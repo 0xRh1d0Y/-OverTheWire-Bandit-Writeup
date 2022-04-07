@@ -136,3 +136,39 @@ bandit1@bandit:~$ cat ./-
 CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 ```
 The password to gain access to the level 02's box is **CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9**
+
+
+
+## :triangular_flag_on_post: Bandit Level 02 - 03
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162153896-a5e80005-0ad9-4736-a5b8-5faea4d23fbf.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162154105-cf0f07e2-d675-4ec4-b556-53332d406708.png)
+
+### Explanation:
+Accessing a file with spaces in its name:
+To read a file name with spaces, use quotes (' ')
+Either use a backslash before each space or write the full file name as a string. As an example: 
+1. Adding backslash before each space:    
+```
+bandit2@bandit:~$ cat spaces\ in\ this\ filename
+```
+2. Adding double quote:
+```
+bandit2@bandit:~$ cat "spaces in this filename"
+```
+Another command that is really useful for this round is **tab completion**, which is triggered by pressing **tab**. This would make the program automatically fills in partially typed commands. 
+
+### Summary:
+```
+bandit2@bandit:~$ ls 
+spaces in this filename
+bandit2@bandit:~$ cat "spaces in this filename"
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+```
+The password to gain access to the level 03's box is **UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK**
+
