@@ -111,7 +111,28 @@ boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 The password to the level 01's box is **boJ9jbbUNNfktd78OOpsqOltutMc3MY1**
 
 
+## :triangular_flag_on_post: Bandit Level 01 - 02
 
+### Problem Description:
 
+![image](https://user-images.githubusercontent.com/79222856/162151146-748f84ef-9b59-407c-8267-85eb1ace4d77.png)
 
+### Solution:
 
+![image](https://user-images.githubusercontent.com/79222856/162151326-8b3a6462-658a-474f-a0c0-ff0b8a67ad72.png)
+
+### Explanation:
+To acquire the password for stage 2, we have to print the content of the file called **–** (the dash symbol), as recommended by the hint.
+
+If you just use the **cat** command to read and print the contents of the file called **–**, unfortunately, your terminal will become stuck. 
+![image](https://user-images.githubusercontent.com/79222856/162151886-49824c11-8c76-43d3-ae28-19f195543935.png)
+
+As we can see, `cat` command doesn't work with a dashed filename
+Instead, so as to hide the special character from `cat`, we direct the `cat` command to the file location.You must supply the full path of the file.
+
+### Summary:
+```
+bandit1@bandit:~$ cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+```
+The password to gain access to the level 02's box is **CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9**
