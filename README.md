@@ -263,3 +263,67 @@ So,the only human-readable string is **koReBOKuIDDepwhWk7jZC0RTdopnAYKh**.
 
 The password to gain access to the level 05's box is **koReBOKuIDDepwhWk7jZC0RTdopnAYKh**
 
+## :triangular_flag_on_post: Bandit Level 05 - 06
+### Problem Description:
+![image](https://user-images.githubusercontent.com/79222856/162202494-a66940ef-0393-460d-94d7-dbe9a00194ef.png)
+### Solution:
+![image](https://user-images.githubusercontent.com/79222856/162204698-e87383d5-19ac-49c8-8af2-cf89c83b89fe.png)
+
+
+### Explanation:
+
+The first thing we do when we start a new level is to run the **ls** command to see what files we have access to.There so many file !  imagine running cat on each and every one of them And wow, we're looking at 80 files in this instance.
+
+
+We must use the suggestions provided to limit down the scope, for example, a file that is human-readable and 1033 bytes in size. In this case, the **find** command makes life a lot easier; read the manpage and look for an appropriate flag that will help you search for files that match your criteria. We may utilize the **type** and **size** parameters in this case .Try to read man **find** page to more understanding about find command : 
+![image](https://user-images.githubusercontent.com/79222856/162207223-f076357a-388d-4e2c-9889-6e5d61a58c3c.png)
+![image](https://user-images.githubusercontent.com/79222856/162207808-f94865e9-cac5-4410-83ef-2b8708815765.png)
+
+```
+Checking file details:
+
+bandit5@bandit:~$ cd inhere
+bandit5@bandit:~/inhere$ ls    
+maybehere00  maybehere04  maybehere08  maybehere12  maybehere16
+maybehere01  maybehere05  maybehere09  maybehere13  maybehere17
+maybehere02  maybehere06  maybehere10  maybehere14  maybehere18
+maybehere03  maybehere07  maybehere11  maybehere15  maybehere19
+bandit5@bandit:~/inhere$ file ./*
+./maybehere00: directory
+./maybehere01: directory
+./maybehere02: directory
+./maybehere03: directory
+./maybehere04: directory
+./maybehere05: directory
+./maybehere06: directory
+./maybehere07: directory
+./maybehere08: directory
+./maybehere09: directory
+./maybehere10: directory
+./maybehere11: directory
+./maybehere12: directory
+./maybehere13: directory
+./maybehere14: directory
+./maybehere15: directory
+./maybehere16: directory
+./maybehere17: directory
+./maybehere18: directory
+./maybehere19: directory
+	
+Using find command, applying required filters:
+
+bandit5@bandit:~/inhere$ find . -type f ! -executable -size 1033c 
+./maybehere07/.file2
+bandit5@bandit:~/inhere$ cat ./maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+```
+### Summary:
+
+```
+bandit5@bandit:~/inhere$ find . -type f -size 1033c
+./maybehere07/.file2
+bandit5@bandit:~/inhere$ cat maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+```
+The password to gain access to the level 06's box is **DXjZPULLxYr17uwoI01bNLQbtFemEgo7**
