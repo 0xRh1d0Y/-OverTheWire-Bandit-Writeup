@@ -172,3 +172,36 @@ UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 ```
 The password to gain access to the level 03's box is **UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK**
 
+## :triangular_flag_on_post: Bandit Level 03 - 04
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162156316-bf878fdb-7ac1-48cb-9a63-a77de687fe91.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162156510-606eb55b-cffa-49e3-b75f-c1ceca768028.png)
+
+### Explanation:
+Here ls  shows no output Because, the file is hidden, just use **ls -a** to find it. To learn about how flags such as **-a** or **-l** work, you can use **man ls**.
+
+![image](https://user-images.githubusercontent.com/79222856/162157817-b56b91ca-881b-4462-899a-5f6d831919a1.png)
+
+### Summary:
+```
+bandit3@bandit:~$ ls
+inhere
+bandit3@bandit:~$ cd inhere
+bandit3@bandit:~/inhere$ ls 
+bandit3@bandit:~/inhere$ ls -al
+total 12
+drwxr-xr-x 2 root    root    4096 May  7  2020 .
+drwxr-xr-x 3 root    root    4096 May  7  2020 ..
+-rw-r----- 1 bandit4 bandit3   33 May  7  2020 .hidden
+bandit3@bandit:~/inhere$ cat .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+```
+The password to gain access to the box in level 04 is **pIwrPrtPN36QITSp3EQaw936yaFoFgAB**
+
+
+
