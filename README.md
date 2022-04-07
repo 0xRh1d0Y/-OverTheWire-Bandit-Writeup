@@ -412,3 +412,37 @@ millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
 ![image](https://user-images.githubusercontent.com/79222856/162261911-9872f6d0-f10c-4151-b8cd-37379e269981.png)
 
 The password to gain access to the level 08's box is **cvX2JJa4CFALtqS87jk27qwqGhBM9plV**
+
+
+## :triangular_flag_on_post: Bandit Level 08 - 09
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162264550-00c98c6b-3dd5-4a45-9c22-547c4532585b.png)
+
+### Solution:
+![image](https://user-images.githubusercontent.com/79222856/162265305-61da053b-f736-4aba-8c22-e0c1f3a95dd3.png)
+
+
+### Explanation:
+If you don't understand how commands like **sort** and **uniq** operate, this level may be extremely difficult.
+	
+Using `sort`, and `uniq` to print the uniq text in the file. `-u` flag used so as to print **only** the unique text:
+Let's have a look at how the **uniq -u** command works first:
+
+
+![image](https://user-images.githubusercontent.com/79222856/162267643-07ed5b25-8958-4af1-8a3a-8951fbee4f7e.png)
+
+As you can see from the example above, the **uniq -u** command eliminates all instances of consecutively duplicated lines, leaving just the lines that have never been duplicated. What about non-consecutively repeated lines? How may they be arranged adjacent to one other? Well, **sort** will assist you in completing the task:
+
+![image](https://user-images.githubusercontent.com/79222856/162267963-3a48abff-b555-475f-bce9-940a11cbb171.png)
+
+
+In short, we can simply retrieve the unique password line by using the piping technique **|** to combine **sort** and **uniq -u**. 
+
+### Summary:
+```
+bandit8@bandit:~$ cat data.txt |sort | uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+```
+The password to gain access to the level 09's box is **UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR**
