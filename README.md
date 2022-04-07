@@ -375,3 +375,40 @@ HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
 ```
 The password to gain access to the level 07's box is **HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs**
 
+## :triangular_flag_on_post: Bandit Level 07 - 08
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162259003-1fe81f28-2d52-4e2c-b12c-e7ab21f1ed24.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162259406-3a9b2230-78ba-4017-8987-c503b116f77a.png)
+
+
+### Explanation:
+
+**cat**-ing the file without doing anything else, you'll quickly regret it since the file includes an endless number of unique strings, making your terminal scroll forever.So here we can use **grep**:
+
+```
+Checking the files present:
+
+bandit7@bandit:~$ ls
+data.txt
+	
+Printing the lines in the file which has "millionth" in it:
+	
+bandit7@bandit:~$ grep -h "millionth" data.txt
+millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+	
+OR
+	
+bandit7@bandit:~$ cat data.txt | grep millionth
+millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+```
+### Summary:
+
+![image](https://user-images.githubusercontent.com/79222856/162261911-9872f6d0-f10c-4151-b8cd-37379e269981.png)
+
+The password to gain access to the level 08's box is **cvX2JJa4CFALtqS87jk27qwqGhBM9plV**
