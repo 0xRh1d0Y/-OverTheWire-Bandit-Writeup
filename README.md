@@ -481,4 +481,32 @@ bandit9@bandit:~$
 ```
 The password to gain access to the level 10's box is **truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk**
 
+## :triangular_flag_on_post: Bandit Level 10 - 11
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162509796-710ed14f-ac8e-4e75-8806-875b8e511852.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162510630-0971efdb-e6ab-46fc-8828-6cc34da705f2.png)
+
+
+### Explanation:
+
+`Base64` Encoded text is present in `data.txt`, This level primarily introduces us to **base64** encoding, which is one of the most widely used methods for encoding data in the worldworld. However, owing to the abundance of tools accessible online, it is simple to detect and decode.  which is decoded as follows:
+
+![image](https://user-images.githubusercontent.com/79222856/162511619-220e98e1-2f45-4798-8c19-a0c0582b7119.png)
+
+However, we can easily do a **base64** decode because the server is running on a Linux distribution and all Unix operating systems have built-in support for the **base64** command. 
+
+### Summary:
+
+![image](https://user-images.githubusercontent.com/79222856/162513426-032125ea-5dc7-4ed0-a104-7d8a658560d2.png)
+
+The password to the level 11's box is **IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR**
+
+
+
+
 
