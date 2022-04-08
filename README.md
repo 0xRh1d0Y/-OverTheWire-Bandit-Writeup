@@ -506,6 +506,42 @@ However, we can easily do a **base64** decode because the server is running on a
 
 The password to the level 11's box is **IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR**
 
+## :triangular_flag_on_post: Bandit Level 11 - 12
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162515792-bffb1b74-79fb-46c7-aba5-c6c9ab749a3c.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162516128-87038a89-4526-4ebb-b972-d6e883f7299b.png)
+
+Now, we can decode this using any decoding tool that you like.I myself use [CyberChef](https://gchq.github.io/CyberChef/) as the main tool for CTFs.
+
+![image](https://user-images.githubusercontent.com/79222856/162516369-2f5f679f-b9fa-4cec-adcb-88227e9cefd9.png)
+
+### Explanation:
+
+As provided in the hint, we are required to perform a ROT13 “decode” on the file given. First, let’s look at the clue.
+```
+bandit11@bandit:~$ cat data.txt 
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+```
+Now, we can decode this using any decoding tool that you like. I myself use [CyberChef](https://gchq.github.io/CyberChef/) as the main tool for CTFs.
+
+However, if you believe solving this problem using a built-in Linux command is sexier, there is a method to imitate the **ROT13** decoding process with the **tr** command: 
+![image](https://user-images.githubusercontent.com/79222856/162518079-fd180097-6b2a-4359-bdec-c4dc3efbe78c.png)
+
+For this problem, **tr** command is used to translate the first set of characters ‘A-Za-z’ to ‘N-ZA-Mn-za-m’ which is a rotation of 13 positions of the first set.Like below!
+```
+bandit11@bandit:~$ cat data.txt | tr "A-Za-z" "N-ZA-Mn-za-m"
+The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+```
+### Summary:
+
+![image](https://user-images.githubusercontent.com/79222856/162518556-9346180f-588f-4896-8aa5-0c19ff1eb9a8.png)
+
+The password to the level 12's box is **5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu**
 
 
 
