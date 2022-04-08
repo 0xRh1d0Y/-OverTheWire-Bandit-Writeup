@@ -446,3 +446,39 @@ bandit8@bandit:~$ cat data.txt |sort | uniq -u
 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 ```
 The password to gain access to the level 09's box is **UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR**
+
+
+## :triangular_flag_on_post: Bandit Level 09 - 10
+
+### Problem Description:
+![image](https://user-images.githubusercontent.com/79222856/162504634-55d4a8af-1b86-485a-9060-71b3d439f831.png)
+
+### Solution:
+![image](https://user-images.githubusercontent.com/79222856/162506994-fa089c6b-9c84-4c9c-92c2-ea31739fd4c7.png)
+
+### Explanation:
+`data.txt` is a binary file, grep doesn't work directly, so I use `strings`, piping it out to `grep`.Try the **strings** command at this point. If you want to know more about what **strings** command does, read its manpage:
+![image](https://user-images.githubusercontent.com/79222856/162508510-eb79b6ec-cc13-48bc-9cd0-79f3bd8ce595.png)
+
+In other words, it searches the whole file for any string values it can examine and displays them in the output.
+Now let us run a strings command on the **data.txt** file and **grep** only records containing the “=” characters, as per the hint given to us to pass this level. 
+
+### Summary:
+```
+bandit9@bandit:~$ cat data.txt | strings | grep "="
+========== the*2i"4
+=:G e
+========== password
+<I=zsGi
+Z)========== is
+A=|t&E
+Zdb=
+c^ LAh=3G
+*SF=s
+&========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+S=A.H&^
+bandit9@bandit:~$ 
+```
+The password to gain access to the level 10's box is **truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk**
+
+
