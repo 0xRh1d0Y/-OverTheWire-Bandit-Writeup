@@ -543,6 +543,134 @@ The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 
 The password to the level 12's box is **5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu**
 
+## :triangular_flag_on_post: Bandit Level 12 - 13
 
+### Problem Description:
 
+![image](https://user-images.githubusercontent.com/79222856/162583122-e55741ad-a421-444e-ad41-025b4e3438ad.png)
 
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162583933-a4933073-bd77-4903-9ede-bb61d7ce7a5c.png)
+
+![image](https://user-images.githubusercontent.com/79222856/162585034-3ff26805-ab69-42b7-9497-a0e1fb4f6c3b.png)
+
+![image](https://user-images.githubusercontent.com/79222856/162584078-a7007721-31db-4fc1-8766-e4fba27b9638.png)
+
+### Explanation:
+This is one of the most difficult levels in the CTF challenge. Let's start by moving the file to a new directory under your name in the **/tmp** folder (make one with the **mkdir** command!).
+
+```
+bandit12@bandit:~$ mkdir /tmp/0xRh1d0Y
+```
+Copy the data.txt file from **~** to **/tmp/yourusername/**:
+```
+bandit12@bandit:~$ cp data.txt /tmp/0xRh1d0Y
+```
+Change the working directory to **/tmp/yourusername** using cd:
+```
+bandit12@bandit:~$ cd /tmp/0xRh1d0Y/
+```
+Let's see what's in the file using **cat**:
+
+![image](https://user-images.githubusercontent.com/79222856/162584316-87fb45f5-cb56-42ea-a9ee-7eb9fe31ade5.png)
+
+As you can see, this is a hexdump, which was converted by the **xxd** command.
+
+![image](https://user-images.githubusercontent.com/79222856/162584457-454a49c7-7bd8-499a-999e-814d4409358e.png)
+
+**xxd** is not really a hex-editor, it just displays hex. However, we can use it to convert files into hex, make edits to them with our favorite text editors, then convert the files back into the correct formats.
+
+Anyway, now we have to perform a reverse hashdump using **xxd** command:
+
+```
+bandit12@bandit:/tmp/0xRh1d0Y$ xxd -r data.txt > secretpass.txt
+
+```
+After running the reverse hexdump command and saving the result to a file (I named mine "secretpass.txt"), use the **file** command to see what type of file it is.
+```
+bandit12@bandit:/tmp/0xRh1d0Y$ file secretpass.txt 
+secretpass.txt: gzip compressed data, was "data2.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+```
+From here on onwards, the flow is as follows:
+
+1. Using the file command, determine what format of file this is.
+2. Using the mv command to alter the file type by renaming it to that specific file format extension.
+3. Using the appropriate tool to decompress/unzip the files (in this case, **gzip** or **gunzip**, **bzip2** and **tar** play a significant role).
+4. Repeat steps 1-3 until you get the file.
+
+The list of commands I have is as below; it will be pretty long. It does, however, follow the process that I outlined before. To make things simpler to understand, I've included a "line break" after each change in file type. I hope it proves useful! 
+
+### Summary:
+
+```
+bandit12@bandit:/tmp/0xRh1d0Y$ xxd -r data.txt > secretpass.txt
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+data.txt  secretpass.txt
+bandit12@bandit:/tmp/0xRh1d0Y$ rm -rf data.txt
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass.txt
+bandit12@bandit:/tmp/0xRh1d0Y$ file secretpass.txt 
+secretpass.txt: gzip compressed data, was "data2.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+bandit12@bandit:/tmp/0xRh1d0Y$ mv secretpass.txt secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ gunzip -d secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass
+bandit12@bandit:/tmp/0xRh1d0Y$ file secretpass
+secretpass: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/0xRh1d0Y$ mv secretpass secretpass.bz2
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass.bz2
+bandit12@bandit:/tmp/0xRh1d0Y$ bzip2 -d secretpass.bz2
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass
+bandit12@bandit:/tmp/0xRh1d0Y$ file secretpass
+secretpass: gzip compressed data, was "data4.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+bandit12@bandit:/tmp/0xRh1d0Y$ mv secretpass secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ gunzip -d secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass
+bandit12@bandit:/tmp/0xRh1d0Y$ file secretpass
+secretpass: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/0xRh1d0Y$ mv secretpass secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ tar xvf secretpass.tar
+data5.bin
+bandit12@bandit:/tmp/0xRh1d0Y$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/0xRh1d0Y$ mv data5.bin secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ tar xvf secretpass.tar
+data6.bin
+bandit12@bandit:/tmp/0xRh1d0Y$ file data6.bin
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/0xRh1d0Y$ mv data6.bin secretpass.bz
+bandit12@bandit:/tmp/0xRh1d0Y$ bzip2 -d secretpass.bz
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass  secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ file secretpass
+secretpass: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/0xRh1d0Y$ mv secretpass secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ tar xvf secretpass.tar
+data8.bin
+bandit12@bandit:/tmp/0xRh1d0Y$ file data8.bin
+data8.bin: gzip compressed data, was "data9.bin", last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+bandit12@bandit:/tmp/0xRh1d0Y$ mv data8.bin secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass.gz  secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ gunzip -d secretpass.gz
+bandit12@bandit:/tmp/0xRh1d0Y$ ls
+secretpass  secretpass.tar
+bandit12@bandit:/tmp/0xRh1d0Y$ file secretpass
+secretpass: ASCII text
+bandit12@bandit:/tmp/0xRh1d0Y$ cat secretpass
+The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+```
+The password to the level 13's box is **8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL**
