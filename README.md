@@ -743,4 +743,39 @@ bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
 ```
 The password to the level 14's box is **4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e**
 
+## :triangular_flag_on_post: Bandit Level 14 - 15
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162630045-f7d3d9c2-5abb-4415-b6e4-60a53130e18f.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162630140-ed246219-e59d-4352-8422-c5366f84cb63.png)
+
+### Explanation:
+
+As mentioned in the level 0 introduction page, all level’s passwords are stored in **/etc/bandit_pass/** but they can only be accessed by the level’s user.
+
+![image](https://user-images.githubusercontent.com/79222856/162630251-5ad2a479-78b1-4e53-b478-824b8492a64c.png)
+
+Now that we are logged in to bandit14, we can retrieve its password, which is **4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e**, as I have done in the previous level. So, we need to submit it to port 30000 on localhost. We can do it using many ways, one of them is **echo** and **netcat**.
+
+![image](https://user-images.githubusercontent.com/79222856/162630306-0aac2024-4d09-4306-935a-0de0f6768e18.png)
+
+![image](https://user-images.githubusercontent.com/79222856/162630339-95b417b1-cc8c-404c-86d2-1b48e44fc98a.png)
+
+Using pipes and redirectors, we can choose the input that is sent via the network, as well as what we do with the data once we receive them. On the command line we can use **nc** as a short name for the **netcat** program.
+```
+bandit14@bandit:~$ echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000
+```
+When we run this command, we take the **STDOUT** of echo and pipe it as the **STDIN** of netcat. The first argument for **netcat** is the **IP address** we want to send it to (which in this case, is **localhost** or **127.0.0.1**), and the second number is the **port** we want to send it to. **Netcat** will then send the password off to the correct location. 
+
+### Summary:
+```
+bandit14@bandit:~$ echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+```
+The password to the level 15's box is **BfMYroe26WYalil77FoDi9qh59eK5xNr**
 
