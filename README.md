@@ -674,3 +674,73 @@ The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 
 ```
 The password to the level 13's box is **8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL**
+
+## :triangular_flag_on_post: Bandit Level 13 - 14
+
+### Problem Description:
+
+![image](https://user-images.githubusercontent.com/79222856/162629214-01b07caa-49b6-4999-bac0-7b6cd819a4ee.png)
+
+### Solution:
+
+![image](https://user-images.githubusercontent.com/79222856/162629570-c4fdb194-e500-4984-a27a-973884d49fe5.png)
+
+![image](https://user-images.githubusercontent.com/79222856/162629611-c47bece0-b7a2-45d9-973e-ec2882ee779d.png)
+
+
+### Explanation:
+
+SSH protocol - including logging in without a password. Let's have a look at what's in the **sshkey.private** file that you were given in the **~** directory: 
+```
+bandit13@bandit:~$ cat sshkey.private 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAxkkOE83W2cOT7IWhFc9aPaaQmQDdgzuXCv+ppZHa++buSkN+
+gg0tcr7Fw8NLGa5+Uzec2rEg0WmeevB13AIoYp0MZyETq46t+jk9puNwZwIt9XgB
+ZufGtZEwWbFWw/vVLNwOXBe4UWStGRWzgPpEeSv5Tb1VjLZIBdGphTIK22Amz6Zb
+ThMsiMnyJafEwJ/T8PQO3myS91vUHEuoOMAzoUID4kN0MEZ3+XahyK0HJVq68KsV
+ObefXG1vvA3GAJ29kxJaqvRfgYnqZryWN7w3CHjNU4c/2Jkp+n8L0SnxaNA+WYA7
+jiPyTF0is8uzMlYQ4l1Lzh/8/MpvhCQF8r22dwIDAQABAoIBAQC6dWBjhyEOzjeA
+J3j/RWmap9M5zfJ/wb2bfidNpwbB8rsJ4sZIDZQ7XuIh4LfygoAQSS+bBw3RXvzE
+pvJt3SmU8hIDuLsCjL1VnBY5pY7Bju8g8aR/3FyjyNAqx/TLfzlLYfOu7i9Jet67
+xAh0tONG/u8FB5I3LAI2Vp6OviwvdWeC4nOxCthldpuPKNLA8rmMMVRTKQ+7T2VS
+nXmwYckKUcUgzoVSpiNZaS0zUDypdpy2+tRH3MQa5kqN1YKjvF8RC47woOYCktsD
+o3FFpGNFec9Taa3Msy+DfQQhHKZFKIL3bJDONtmrVvtYK40/yeU4aZ/HA2DQzwhe
+ol1AfiEhAoGBAOnVjosBkm7sblK+n4IEwPxs8sOmhPnTDUy5WGrpSCrXOmsVIBUf
+laL3ZGLx3xCIwtCnEucB9DvN2HZkupc/h6hTKUYLqXuyLD8njTrbRhLgbC9QrKrS
+M1F2fSTxVqPtZDlDMwjNR04xHA/fKh8bXXyTMqOHNJTHHNhbh3McdURjAoGBANkU
+1hqfnw7+aXncJ9bjysr1ZWbqOE5Nd8AFgfwaKuGTTVX2NsUQnCMWdOp+wFak40JH
+PKWkJNdBG+ex0H9JNQsTK3X5PBMAS8AfX0GrKeuwKWA6erytVTqjOfLYcdp5+z9s
+8DtVCxDuVsM+i4X8UqIGOlvGbtKEVokHPFXP1q/dAoGAcHg5YX7WEehCgCYTzpO+
+xysX8ScM2qS6xuZ3MqUWAxUWkh7NGZvhe0sGy9iOdANzwKw7mUUFViaCMR/t54W1
+GC83sOs3D7n5Mj8x3NdO8xFit7dT9a245TvaoYQ7KgmqpSg/ScKCw4c3eiLava+J
+3btnJeSIU+8ZXq9XjPRpKwUCgYA7z6LiOQKxNeXH3qHXcnHok855maUj5fJNpPbY
+iDkyZ8ySF8GlcFsky8Yw6fWCqfG3zDrohJ5l9JmEsBh7SadkwsZhvecQcS9t4vby
+9/8X4jS0P8ibfcKS4nBP+dT81kkkg5Z5MohXBORA7VWx+ACohcDEkprsQ+w32xeD
+qT1EvQKBgQDKm8ws2ByvSUVs9GjTilCajFqLJ0eVYzRPaY6f++Gv/UVfAPV4c+S0
+kAWpXbv5tbkkzbS0eaLPTKgLzavXtQoTtKwrjpolHKIHUz6Wu+n4abfAIRFubOdN
+/+aLoRQ0yBDRbdXMsZN/jvY44eM+xRLdRVyMmdPtP8belRi2E2aEzA==
+-----END RSA PRIVATE KEY-----
+```
+How can we make use of it? Let's check out the manpage of **ssh**:
+
+![image](https://user-images.githubusercontent.com/79222856/162629854-14f153c4-adbd-4093-be1d-dd6b12c7b99b.png)
+
+
+
+And yes, by using:
+```
+bandit13@bandit:~$ ssh -i sshkey.private bandit14@localhost 
+bandit14@bandit:~$ 
+```
+Boom! You've already entered the box for level 14! The password may then be read from the **/etc/bandit_pass/bandit14** directory if you want to know it. All level passwords are kept in that directory, as indicated on the level 0 introduction page, however they can only be viewed by the level's user. 
+
+### Summary:
+```
+bandit13@bandit:~$ ssh -i sshkey.private bandit14@localhost 
+
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+```
+The password to the level 14's box is **4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e**
+
+
